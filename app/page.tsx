@@ -3,6 +3,8 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Truck, ShieldCheck, Headphones } from "lucide-react"
+// Import the getPath utility
+import { getPath } from "@/lib/utils-path"
 
 export default function Home() {
   return (
@@ -20,7 +22,7 @@ export default function Home() {
               </p>
               <div>
                 <Button size="lg" asChild>
-                  <Link href="/product">Shop Now</Link>
+                  <Link href={getPath("/product")}>Shop Now</Link>
                 </Button>
               </div>
             </div>
@@ -129,7 +131,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
               <Button size="lg" variant="secondary" asChild>
-                <Link href="/product">Buy Now - $49.99</Link>
+                <Link href={getPath("/product")}>Buy Now - $49.99</Link>
               </Button>
             </div>
           </div>

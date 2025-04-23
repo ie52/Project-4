@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { ShoppingCart, Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
@@ -12,17 +12,20 @@ export default function Navbar() {
   const [openMobileSubmenu, setOpenMobileSubmenu] = useState<string | null>(null)
   const pathname = usePathname()
 
+  const router = useRouter()
+  const basePath = process.env.NODE_ENV === "production" ? "/Project-4" : ""
+
   const routes = [
-    { name: "Home", path: "/" },
-    { name: "Products", path: "/product" },
-    { name: "About Us", path: "/about" },
-    { name: "Contact Us", path: "/contact" },
+    { name: "Home", path: `${basePath}/` },
+    { name: "Products", path: `${basePath}/product` },
+    { name: "About Us", path: `${basePath}/about` },
+    { name: "Contact Us", path: `${basePath}/contact` },
     {
       name: "Support",
-      path: "/support",
+      path: `${basePath}/support`,
       children: [
-        { name: "General FAQs", path: "/support/general" },
-        { name: "Shipping FAQs", path: "/support/shipping" },
+        { name: "General FAQs", path: `${basePath}/support/general` },
+        { name: "Shipping FAQs", path: `${basePath}/support/shipping` },
       ],
     },
   ]
@@ -38,7 +41,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
+        <Link href={`${basePath}/`} className="flex items-center space-x-2">
           <span className="text-xl font-bold">BT5.0</span>
         </Link>
 

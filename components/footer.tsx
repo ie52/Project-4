@@ -1,6 +1,9 @@
+"use client"
 import Link from "next/link"
 
 export default function Footer() {
+  const basePath = process.env.NODE_ENV === "production" ? "/Project-4" : ""
+
   return (
     <footer className="border-t bg-muted/40">
       <div className="container py-8 md:py-12">
@@ -15,7 +18,7 @@ export default function Footer() {
             <h3 className="text-sm font-semibold">Products</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/product" className="text-muted-foreground hover:text-foreground">
+                <Link href={`${basePath}/product`} className="text-muted-foreground hover:text-foreground">
                   Bluetooth Transmitter
                 </Link>
               </li>
@@ -25,17 +28,17 @@ export default function Footer() {
             <h3 className="text-sm font-semibold">Support</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/support/general" className="text-muted-foreground hover:text-foreground">
+                <Link href={`${basePath}/support/general`} className="text-muted-foreground hover:text-foreground">
                   General FAQs
                 </Link>
               </li>
               <li>
-                <Link href="/support/shipping" className="text-muted-foreground hover:text-foreground">
+                <Link href={`${basePath}/support/shipping`} className="text-muted-foreground hover:text-foreground">
                   Shipping FAQs
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-muted-foreground hover:text-foreground">
+                <Link href={`${basePath}/contact`} className="text-muted-foreground hover:text-foreground">
                   Contact Us
                 </Link>
               </li>
